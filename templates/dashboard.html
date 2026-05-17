@@ -2,30 +2,48 @@
 <html>
 
 <head>
+
     <title>Task Manager</title>
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+
 </head>
 
 <body>
 
-    <h1>Task Manager</h1>
+    <div class="container">
 
-    <form method="POST">
+        <h1>Task Manager 🚀</h1>
 
-        <input type="text" name="task" placeholder="Enter your task">
+        <form method="POST">
 
-        <button type="submit">Add Task</button>
+            <input type="text" name="task" placeholder="Enter your task">
 
-    </form>
+            <button type="submit">Add</button>
 
-    <ul>
+        </form>
 
-        {% for task in tasks %}
+        <ul>
 
-            <li>{{ task }}</li>
+            {% for task in tasks %}
 
-        {% endfor %}
+            <li>
 
-    </ul>
+                {{ task }}
+
+                <a href="/delete/{{ loop.index0 }}">
+
+                    Delete
+
+                </a>
+
+            </li>
+
+            {% endfor %}
+
+        </ul>
+
+    </div>
 
 </body>
 
